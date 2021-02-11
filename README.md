@@ -11,7 +11,7 @@
 ![image.png](./documentation/From_the_example_code_CD4051.png)
 
 ## Video test link
-[![image2.png](./documentation/test.png)](https://youtu.be/LWjm9HOSOcg)
+[![image2.png](./documentation/test.PNG)](https://youtu.be/LWjm9HOSOcg)
 
 ## Compilation with #define TEST
 Like the video.
