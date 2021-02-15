@@ -1,37 +1,3 @@
-const byte NCD = 2;
-
-struct D {
-  byte read_pin;
-  byte out_pins[3];
-  byte inhib[NCD];
-  B b[8 * NCD];
-};
-
-D sd = {
-  A0,
-  {8, 9, 10},
-  {6, 7},
-  {
-    {CD4051_ANALOG, CHAN8, NOTE_ON, CONTROL11},
-    B(),
-    B(),
-    B(),
-    B(),
-    B(),
-    B(),
-    B(),
-    B(),
-    B(),
-    B(),
-    B(),
-    B(),
-    B(),
-    {CD4051_PULL_DOWN, CHAN8, NOTE_ON, CONTROL12},
-    {CD4051_ANALOG, CHAN8, NOTE_ON, CONTROL13},
-  },
-};
-
-
 void sd_print() {
   for (int d = 0; d < 8 * NCD; d++) {
     Serial.println("----------------------------");
@@ -102,6 +68,17 @@ void sd_update_state() {
 
         b_manage(x, analogRead(sd.read_pin));
       }
+
+//      PLUS LONG s'il existe des OUT_OF_ORDER
+      //      a = (1 && (i & B00000001));
+      //      b = (1 && (i & B00000010));
+      //      c = (1 && (i & B00000100));
+      //      digitalWrite(sd.out_pins[0], a);
+      //      digitalWrite(sd.out_pins[1], b);
+      //      digitalWrite(sd.out_pins[2], c);
+      //      if (x->ct != OUT_OF_ORDER) {
+      //        b_manage(x, analogRead(sd.read_pin));
+      //      }
     }
   }
 }
